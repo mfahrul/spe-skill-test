@@ -55,9 +55,9 @@ func (spe SpeSkillTest) BlueOcean(s []int, ins int) []int {
 
 	s = findNRemove(s, ins)
 
-	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-		s[i], s[j] = s[j], s[i]
-	}
+	// for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+	// 	s[i], s[j] = s[j], s[i]
+	// }
 	return s
 }
 
@@ -68,8 +68,8 @@ func remove(slice []int, s int) []int {
 func findNRemove(data []int, element int) []int {
 	for k, v := range data {
 		if element == v {
-			data = remove(data, k)
-			findNRemove(data, element)
+			c := remove(data, k)
+			data = findNRemove(c, element)
 			// return k
 		}
 	}
@@ -89,8 +89,8 @@ func main() {
 
 	fmt.Println(spe.FindNeedle(needle, "blue"))
 
-	blueOc := []int{1, 2, 3, 4, 6, 10}
+	blueOc := []int{1, 5, 5, 5, 5, 3}
 
-	fmt.Println(spe.BlueOcean(blueOc, 1))
+	fmt.Println(spe.BlueOcean(blueOc, 5))
 
 }
